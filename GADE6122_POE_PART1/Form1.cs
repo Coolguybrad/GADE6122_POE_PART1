@@ -17,7 +17,6 @@ namespace GADE6122_POE_PART1
         public Form1()
         {
             InitializeComponent();
-
             
             map.getHero().ToString();
             map.getEnemy();

@@ -27,6 +27,7 @@ namespace GADE6122_POE_PART1
             width = randNum.Next(minW, maxW);
             map = new Tile[height, width];
             enemy = new Enemy[numE];
+            FillMapToDefaultValues();
             //Create() for hero
             Create(typeH);
             //Create() for Enemy array
@@ -34,6 +35,17 @@ namespace GADE6122_POE_PART1
             {
                 Create(typeE);
                 enemyCount++;
+            }
+        }
+
+        public void FillMapToDefaultValues()
+        {
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    map[i, j] = new EmptyTile(i, j, Tile.TileType.Empty);
+                }
             }
         }
 
@@ -113,12 +125,20 @@ namespace GADE6122_POE_PART1
             int numY = rand.Next(map.GetLength(1));
             bool valid = false;
             Tile result = null;
+
+            
             if (t == typeH)
             {
 
                 while (!valid)
                 {
-                    if (map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
+                    if (map[numX, numY].getType() == typeE)
+                    {
+                        numX = rand.Next();
+                        numY = rand.Next();
+                        valid = false;
+                    }
+                    else if (map[numX, numY] is Obstacle)
                     {
                         numX = rand.Next();
                         numY = rand.Next();
