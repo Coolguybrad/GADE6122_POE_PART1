@@ -17,8 +17,6 @@ namespace GADE6122_POE_PART1
             this.x = x;
             this.y = y;
             tType = t;
-
-
         }
 
         public int getX() //getter method that returns the x variable

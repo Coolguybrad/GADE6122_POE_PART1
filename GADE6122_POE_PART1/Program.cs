@@ -12,6 +12,7 @@ namespace GADE6122_POE_PART1
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();

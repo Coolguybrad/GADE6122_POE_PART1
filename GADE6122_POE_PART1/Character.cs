@@ -13,7 +13,7 @@ namespace GADE6122_POE_PART1
         protected int hp;
         protected int maxHP;
         protected int damage;
-        protected Tile[] playerVision = new Tile[4]; //0 up 1 down 2 left 3 right
+        protected Tile[] playerVision = new Tile[4]; //0 = up. 1 = down. 2 = left. 3 = right.
 
         public enum Movement
         {
@@ -142,11 +142,9 @@ namespace GADE6122_POE_PART1
             {
                 this.setY(y + 1);
             }
-
         }
 
         public abstract Movement ReturnMove(Movement m = 0);
-
 
         public abstract string ToString();
     }

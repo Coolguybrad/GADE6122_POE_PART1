@@ -109,8 +109,8 @@ namespace GADE6122_POE_PART1
         private Tile Create(Tile.TileType t)
         {
             Random rand = new Random();
-            int numX = rand.Next();
-            int numY = rand.Next();
+            int numX = rand.Next(map.GetLength(0));
+            int numY = rand.Next(map.GetLength(1));
             bool valid = false;
             Tile result = null;
             if (t == typeH)
