@@ -8,14 +8,14 @@ namespace GADE6122_POE_PART1
 {
     class GameEngine
     {
-        private Map map; //Map object
-        private static readonly char[] symbols = { 'H', '.', 'S', 'X' }; //char array of symbols which represent the tiletype enum
+        private static Map map; //Map object
+        private readonly char[] symbols = { 'H', '.', 'S', 'X' }; //char array of symbols which represent the tiletype enum
         public GameEngine() //constructor that gives values to the map object
         {
             map = new Map(10, 20, 10, 20, 3); //Min Width, Max Width, min Height, max Height, num of Enemies
         }
 
-        public Map getMap()
+        public static Map getMap()
         {
             return map; //returns map
         }
@@ -42,6 +42,7 @@ namespace GADE6122_POE_PART1
         {
             //nested forloop which parses the map array and returns it in a string format
             string result = "";
+            Console.WriteLine(result + "something, anything");
             for (int i = 0; i < map.getMap().GetLength(0); i++)
             {
                 for (int j = 0; j < map.getMap().GetLength(1); j++)
@@ -62,10 +63,12 @@ namespace GADE6122_POE_PART1
                     {
                         result += symbols[0] + " ";
                     }
+                    
 
                 }
                 result += "\n";
             }
+            Console.WriteLine(result);
             return result;
         }
     }

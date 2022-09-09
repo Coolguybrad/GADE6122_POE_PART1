@@ -106,7 +106,7 @@ namespace GADE6122_POE_PART1
             return result;
         }
 
-        private int DistanceTo(Character target)
+        public int DistanceTo(Character target)
         {
             int dX = target.getX() - this.getX();
             int dY = target.getY() - this.getY();

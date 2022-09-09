@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GADE6122_POE_PART1
 {
@@ -27,6 +23,7 @@ namespace GADE6122_POE_PART1
             width = randNum.Next(minW, maxW);
             map = new Tile[height, width];
             enemy = new Enemy[numE];
+
             FillMapToDefaultValues();
             //Create() for hero
             Create(typeH);
@@ -47,6 +44,10 @@ namespace GADE6122_POE_PART1
                     map[i, j] = new EmptyTile(i, j, Tile.TileType.Empty);
                 }
             }
+            //for (int i = 0; i < length; i++)
+            //{
+
+            //}
         }
 
         //Accessors & Mutators
@@ -126,10 +127,10 @@ namespace GADE6122_POE_PART1
             bool valid = false;
             Tile result = null;
 
-            
+
             if (t == typeH)
             {
-
+                hero = new Hero(3, 3, Tile.TileType.Hero, 2, 10, 10);
                 while (!valid)
                 {
                     if (map[numX, numY].getType() == typeE)
@@ -156,24 +157,31 @@ namespace GADE6122_POE_PART1
             }
             else
             {
-                valid = false;
-                while (!valid)
+                for (int i = 0; i < enemy.Length; i++)
                 {
+                    enemy[i] = new SwampCreature(numX, numY, Tile.TileType.Enemy, 3, 10, 10);
 
-                    if (map[numX, numY].getType() == typeH || map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
+                    valid = false;
+                    while (!valid)
                     {
-                        numX = rand.Next();
-                        numY = rand.Next();
-                        valid = false;
-                    }
-                    else
-                    {
-                        enemy[enemyCount].setX(numX);
-                        enemy[enemyCount].setY(numY);
-                        valid = true;
-                        result = enemy[enemyCount];
+
+                        if (map[numX, numY].getType() == typeH || map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
+                        {
+                            numX = rand.Next();
+                            numY = rand.Next();
+                            valid = false;
+                        }
+                        else
+                        {
+                            enemy[i].setX(numX);
+                            enemy[i].setY(numY);
+                            valid = true;
+                            result = enemy[enemyCount];
+                        }
                     }
                 }
+
+
             }
             return result;
         }

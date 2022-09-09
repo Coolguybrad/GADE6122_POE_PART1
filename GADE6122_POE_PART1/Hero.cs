@@ -22,28 +22,28 @@ namespace GADE6122_POE_PART1
 
             ConsoleKeyInfo keyPress = Console.ReadKey();
 
-            if (ConsoleKey.W == keyPress.Key)
+            if (m == Movement.Up)
             {
                 if (playerVision[0].getType() != TileType.Enemy || (playerVision[0] is Obstacle)) //Will de Morgan mess us UP??????
                 {
                     result = Movement.Up;
                 }
             }
-            else if (ConsoleKey.S == keyPress.Key)
+            else if (m == Movement.Down)
             {
                 if (playerVision[1].getType() != TileType.Enemy || (playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
                 {
                     result = Movement.Down;
                 }
             }
-            else if (ConsoleKey.A == keyPress.Key)
+            else if (m == Movement.Left)
             {
                 if (playerVision[2].getType() != TileType.Enemy || (playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
                 {
                     result = Movement.Left;
                 }
             }
-            else if (ConsoleKey.D == keyPress.Key)
+            else if (m == Movement.Right)
             {
                 if (playerVision[3].getType() != TileType.Enemy || (playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
                 {
