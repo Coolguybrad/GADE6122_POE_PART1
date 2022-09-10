@@ -172,10 +172,11 @@ namespace GADE6122_POE_PART1
             }
             else
             {
-                numX = rand.Next(map.GetLength(0));
-                numY = rand.Next(map.GetLength(1));
+
                 for (int i = 0; i < enemyCount; i++)
                 {
+                    numX = rand.Next(map.GetLength(0));
+                    numY = rand.Next(map.GetLength(1));
                     enemy[i] = new SwampCreature(numX, numY, Tile.TileType.Enemy, 3, 10, 10);
 
                     valid = false;

@@ -58,6 +58,8 @@ namespace GADE6122_POE_PART1
                     }
                 }
 
+                map.getMap()[posX, posY] = new EmptyTile(posX, posY, Tile.TileType.Empty);
+
                 map.getMap()[x, y] = map.getHero(); //sets heroes new location on the map array to the hero object that was created
                 map.UpdateVision(); //updates vision
                 result = true; //sets result to true
@@ -68,6 +70,7 @@ namespace GADE6122_POE_PART1
         {
             //nested forloop which parses the map array and returns it in a string format
             string result = "";
+
 
             for (int i = 0; i < map.getMap().GetLength(0); i++)
             {
@@ -83,6 +86,7 @@ namespace GADE6122_POE_PART1
                     }
                     else if (map.getMap()[i, j] is Enemy) //For the "S"
                     {
+
                         result += symbols[2] + " ";
                     }
                     else if (map.getMap()[i, j] is Hero) //For the "H"

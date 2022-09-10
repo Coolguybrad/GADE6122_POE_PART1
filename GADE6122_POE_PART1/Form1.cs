@@ -36,9 +36,11 @@ namespace GADE6122_POE_PART1
 
         public void FillComboBox()
         {
+            int count = 0;
             for (int i = 0; i < gameEngine.getMap().getEnemy().Length; i++)
             {
-                comboBoxEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType());
+                count++;
+                cboEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType() + " " + count);
             }
 
             //For later use probably: if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[i]))
@@ -46,6 +48,24 @@ namespace GADE6122_POE_PART1
             //}
         }
 
+        public void attack()
+        {
+            int selectedEnemy = cboEnemies.SelectedIndex;
+
+            if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[selectedEnemy]))
+            {
+                lblHitOrMiss.Text = "HIT!";
+                gameEngine.getMap().getHero().Attack(gameEngine.getMap().getEnemy()[selectedEnemy]);
+            }
+            else
+            {
+                lblHitOrMiss.Text = "MISS!";
+            }
+        }
+        public void destroyTheStupidDuplicatingHeroClones()
+        {
+            gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY()] = new EmptyTile(gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY(), Tile.TileType.Empty);
+        }
         private void lblPlayerInfo_Click(object sender, EventArgs e)
         {
 
@@ -71,7 +91,7 @@ namespace GADE6122_POE_PART1
 
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() - 1] is Obstacle))
             {
-
+                destroyTheStupidDuplicatingHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Up);
 
                 lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
@@ -82,11 +102,14 @@ namespace GADE6122_POE_PART1
 
         }
 
+
+
         private void btnDown_Click(object sender, EventArgs e)
         {
 
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() + 1] is Obstacle))
             {
+                destroyTheStupidDuplicatingHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Down);
                 lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
                 DisplayMap();
@@ -98,6 +121,7 @@ namespace GADE6122_POE_PART1
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
+                destroyTheStupidDuplicatingHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Left);
                 lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
                 DisplayMap();
@@ -109,6 +133,7 @@ namespace GADE6122_POE_PART1
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
+                destroyTheStupidDuplicatingHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Right);
                 lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
                 DisplayMap();
@@ -119,6 +144,11 @@ namespace GADE6122_POE_PART1
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAttack_Click(object sender, EventArgs e)
+        {
+            attack();
         }
     }
 }
