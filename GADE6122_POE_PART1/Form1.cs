@@ -13,8 +13,7 @@ namespace GADE6122_POE_PART1
 
             Console.WriteLine("Hello");
 
-            GameEngine.getMap().getHero().ToString();
-            GameEngine.getMap().getEnemy();
+            
 
             DisplayMap();
 
@@ -22,16 +21,17 @@ namespace GADE6122_POE_PART1
 
         public void DisplayMap()
         {
+            lblMap.Font = new System.Drawing.Font(System.Drawing.FontFamily.GenericMonospace.ToString(), 10);
             lblMap.Text = gameEngine.ToString();
         }
 
         public void FillComboBox()
         {
-            for (int i = 0; i < GameEngine.getMap().getEnemy().Length; i++)
+            for (int i = 0; i < gameEngine.getMap().getEnemy().Length; i++)
             {
-                if (GameEngine.getMap().getHero().CheckRange(GameEngine.getMap().getEnemy()[i]))
+                if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[i]))
                 {
-                    comboBoxEnemies.Items.Add(GameEngine.getMap().getEnemy()[i].getType());
+                    comboBoxEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType());
                 }
             }
 
@@ -59,23 +59,64 @@ namespace GADE6122_POE_PART1
 
         private void btnUp_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(gameEngine.ToString());
-            GameEngine.getMap().getHero().Move(Character.Movement.Up);
+            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() - 1] is Obstacle)
+            {
+
+            }
+            else
+            {
+                
+                gameEngine.MovePlayer(Character.Movement.Up);
+                DisplayMap();
+                
+            }
+
         }
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-            GameEngine.getMap().getHero().Move(Character.Movement.Down);
+            
+            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() + 1] is Obstacle)
+            {
+
+            }
+            else
+            {
+                
+                gameEngine.MovePlayer(Character.Movement.Down);
+                DisplayMap();
+                
+            }
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            GameEngine.getMap().getHero().Move(Character.Movement.Left);
+            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle)
+            {
+
+            }
+            else
+            {
+                
+                gameEngine.MovePlayer(Character.Movement.Left);
+                DisplayMap();
+                
+            }
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
-            GameEngine.getMap().getHero().Move(Character.Movement.Right);
+            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle)
+            {
+
+            }
+            else
+            {
+                
+                gameEngine.MovePlayer(Character.Movement.Right);
+                DisplayMap();
+                
+            }
         }
     }
 }

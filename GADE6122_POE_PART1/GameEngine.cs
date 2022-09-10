@@ -8,14 +8,14 @@ namespace GADE6122_POE_PART1
 {
     class GameEngine
     {
-        private static Map map; //Map object
+        private  Map map; //Map object
         private readonly char[] symbols = { 'H', '.', 'S', 'X' }; //char array of symbols which represent the tiletype enum
         public GameEngine() //constructor that gives values to the map object
         {
             map = new Map(10, 20, 10, 20, 3); //Min Width, Max Width, min Height, max Height, num of Enemies
         }
 
-        public static Map getMap()
+        public  Map getMap()
         {
             return map; //returns map
         }
@@ -24,8 +24,8 @@ namespace GADE6122_POE_PART1
 
         {
             //x and y variables of the hero on the map
-            int x = map.getHero().getX();
-            int y = map.getHero().getY();
+            int y = map.getHero().getX();
+            int x = map.getHero().getY();
 
             bool result = false;//result to return
             if (m != Character.Movement.Stationary) //if m is not = to stationay the code below will run
@@ -49,7 +49,7 @@ namespace GADE6122_POE_PART1
                 {
                     if (map.getMap()[i, j] is EmptyTile) //For the "."
                     {
-                        result += symbols[1] + " ";
+                        result += symbols[1] + "  ";
                     }
                     else if (map.getMap()[i, j] is Obstacle) //For the "X"
                     {

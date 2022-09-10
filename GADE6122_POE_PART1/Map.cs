@@ -16,6 +16,7 @@ namespace GADE6122_POE_PART1
         private int enemyCount = 0; //enemy counter
         private Random randNum = new Random(); //random number object
 
+
         //Constructor
         public Map(int minW, int maxW, int minH, int maxH, int numE)
         {
@@ -28,11 +29,13 @@ namespace GADE6122_POE_PART1
             //Create() for hero
             Create(typeH);
             //Create() for Enemy array
-            for (int i = 0; i < enemy.Length; i++)
-            {
-                Create(typeE);
-                enemyCount++;
-            }
+            enemyCount = numE;
+
+            Create(typeE);
+
+
+
+
         }
 
         public void FillMapToDefaultValues()
@@ -44,10 +47,19 @@ namespace GADE6122_POE_PART1
                     map[i, j] = new EmptyTile(i, j, Tile.TileType.Empty);
                 }
             }
-            //for (int i = 0; i < length; i++)
-            //{
-
-            //}
+            for (int i = 0; i < width; i++)
+            {
+                map[0, i] = new Obstacle(0, i, Tile.TileType.Wall);
+            }
+            for (int i = 1; i < height-1; i++)
+            {
+                map[i, 0] = new Obstacle(0, i, Tile.TileType.Wall);
+                map[i, width-1] = new Obstacle(0, i, Tile.TileType.Wall);
+            }
+            for (int i = 0; i < width; i++)
+            {
+                map[height-1, i] = new Obstacle(0, i, Tile.TileType.Wall);
+            }
         }
 
         //Accessors & Mutators
@@ -135,21 +147,21 @@ namespace GADE6122_POE_PART1
                 {
                     if (map[numX, numY].getType() == typeE)
                     {
-                        numX = rand.Next();
-                        numY = rand.Next();
+                        numX = rand.Next(map.GetLength(0));
+                        numY = rand.Next(map.GetLength(1));
                         valid = false;
                     }
                     else if (map[numX, numY] is Obstacle)
                     {
-                        numX = rand.Next();
-                        numY = rand.Next();
+                        numX = rand.Next(map.GetLength(0));
+                        numY = rand.Next(map.GetLength(1));
                         valid = false;
                     }
                     else
                     {
                         hero.setX(numX);
                         hero.setY(numY);
-
+                        map[hero.getX(), hero.getY()] = hero;
                         valid = true;
                         result = hero;
                     }
@@ -157,7 +169,9 @@ namespace GADE6122_POE_PART1
             }
             else
             {
-                for (int i = 0; i < enemy.Length; i++)
+                numX = rand.Next(map.GetLength(0));
+                numY = rand.Next(map.GetLength(1));
+                for (int i = 0; i < enemyCount; i++)
                 {
                     enemy[i] = new SwampCreature(numX, numY, Tile.TileType.Enemy, 3, 10, 10);
 
@@ -167,16 +181,18 @@ namespace GADE6122_POE_PART1
 
                         if (map[numX, numY].getType() == typeH || map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
                         {
-                            numX = rand.Next();
-                            numY = rand.Next();
+                            numX = rand.Next(1, map.GetLength(0));
+                            numY = rand.Next(1, map.GetLength(1));
                             valid = false;
                         }
                         else
                         {
                             enemy[i].setX(numX);
                             enemy[i].setY(numY);
+                            map[enemy[i].getX(), enemy[i].getX()] = enemy[i];
+                            result = enemy[i];
                             valid = true;
-                            result = enemy[enemyCount];
+
                         }
                     }
                 }
