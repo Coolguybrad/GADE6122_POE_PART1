@@ -36,6 +36,7 @@
             this.btnDown = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
+            this.lblXandY = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPlayerInfo
@@ -117,11 +118,21 @@
             this.btnLeft.UseVisualStyleBackColor = true;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
+            // lblXandY
+            // 
+            this.lblXandY.AutoSize = true;
+            this.lblXandY.Location = new System.Drawing.Point(632, 115);
+            this.lblXandY.Name = "lblXandY";
+            this.lblXandY.Size = new System.Drawing.Size(92, 13);
+            this.lblXandY.TabIndex = 8;
+            this.lblXandY.Text = "x and y temp label";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblXandY);
             this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.btnDown);
@@ -148,6 +159,7 @@
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.Label lblXandY;
     }
 }
 

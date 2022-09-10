@@ -16,7 +16,7 @@ namespace GADE6122_POE_PART1
             this.damage = 2;
         }
 
-        public override Movement ReturnMove(Movement m)
+        public override Movement ReturnMove(Movement m) //Might be a problem because of movement
         {
             Movement result = Movement.Stationary;
 
@@ -56,10 +56,10 @@ namespace GADE6122_POE_PART1
 
         public override string ToString()
         {
-            return "Player Stats:\n" +
+            return "Player Stats:\n==========\n" +
                    "HP: " + hp + " / " + maxHP +
                    "\nDamage: 2\n" +
-                   "[" + x + "," + y + "]";
+                   "Position: [" + x + ", " + y + "]";
         }
     }
 }

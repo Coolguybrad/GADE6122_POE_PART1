@@ -10,12 +10,16 @@ namespace GADE6122_POE_PART1
         public Form1()
         {
             InitializeComponent();
+            lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
+            DisplayPlayerInfo();
+
 
             Console.WriteLine("Hello");
 
-            
+
 
             DisplayMap();
+            FillComboBox();
 
         }
 
@@ -25,16 +29,21 @@ namespace GADE6122_POE_PART1
             lblMap.Text = gameEngine.ToString();
         }
 
+        public void DisplayPlayerInfo()
+        {
+            lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
+        }
+
         public void FillComboBox()
         {
             for (int i = 0; i < gameEngine.getMap().getEnemy().Length; i++)
             {
-                if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[i]))
-                {
-                    comboBoxEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType());
-                }
+                comboBoxEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType());
             }
 
+            //For later use probably: if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[i]))
+            //{
+            //}
         }
 
         private void lblPlayerInfo_Click(object sender, EventArgs e)
@@ -59,63 +68,51 @@ namespace GADE6122_POE_PART1
 
         private void btnUp_Click(object sender, EventArgs e)
         {
-            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() - 1] is Obstacle)
+
+            if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() - 1] is Obstacle))
             {
 
-            }
-            else
-            {
-                
                 gameEngine.MovePlayer(Character.Movement.Up);
+
+                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
+
                 DisplayMap();
-                
+
             }
 
         }
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-            
-            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() + 1] is Obstacle)
-            {
 
-            }
-            else
+            if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() + 1] is Obstacle))
             {
-                
                 gameEngine.MovePlayer(Character.Movement.Down);
+                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
                 DisplayMap();
-                
+
             }
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle)
+            if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
-
-            }
-            else
-            {
-                
                 gameEngine.MovePlayer(Character.Movement.Left);
+                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
                 DisplayMap();
-                
+
             }
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
-            if (gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle)
+            if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
-
-            }
-            else
-            {
-                
                 gameEngine.MovePlayer(Character.Movement.Right);
+                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
                 DisplayMap();
-                
+
             }
         }
 

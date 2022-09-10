@@ -32,10 +32,6 @@ namespace GADE6122_POE_PART1
             enemyCount = numE;
 
             Create(typeE);
-
-
-
-
         }
 
         public void FillMapToDefaultValues()
@@ -51,14 +47,14 @@ namespace GADE6122_POE_PART1
             {
                 map[0, i] = new Obstacle(0, i, Tile.TileType.Wall);
             }
-            for (int i = 1; i < height-1; i++)
+            for (int i = 1; i < height - 1; i++)
             {
                 map[i, 0] = new Obstacle(0, i, Tile.TileType.Wall);
-                map[i, width-1] = new Obstacle(0, i, Tile.TileType.Wall);
+                map[i, width - 1] = new Obstacle(0, i, Tile.TileType.Wall);
             }
             for (int i = 0; i < width; i++)
             {
-                map[height-1, i] = new Obstacle(0, i, Tile.TileType.Wall);
+                map[height - 1, i] = new Obstacle(0, i, Tile.TileType.Wall);
             }
         }
 
@@ -145,25 +141,32 @@ namespace GADE6122_POE_PART1
                 hero = new Hero(3, 3, Tile.TileType.Hero, 2, 10, 10);
                 while (!valid)
                 {
-                    if (map[numX, numY].getType() == typeE)
+                    try
                     {
-                        numX = rand.Next(map.GetLength(0));
-                        numY = rand.Next(map.GetLength(1));
-                        valid = false;
+                        if (map[numX, numY].getType() == typeE)
+                        {
+                            numX = rand.Next(map.GetLength(0));
+                            numY = rand.Next(map.GetLength(1));
+                            valid = false;
+                        }
+                        else if (map[numX, numY] is Obstacle)
+                        {
+                            numX = rand.Next(map.GetLength(0));
+                            numY = rand.Next(map.GetLength(1));
+                            valid = false;
+                        }
+                        else
+                        {
+                            hero.setX(numX);
+                            hero.setY(numY);
+                            map[hero.getY(), hero.getX()] = hero;
+                            valid = true;
+                            result = hero;
+                        }
                     }
-                    else if (map[numX, numY] is Obstacle)
+                    catch (Exception e)
                     {
-                        numX = rand.Next(map.GetLength(0));
-                        numY = rand.Next(map.GetLength(1));
                         valid = false;
-                    }
-                    else
-                    {
-                        hero.setX(numX);
-                        hero.setY(numY);
-                        map[hero.getX(), hero.getY()] = hero;
-                        valid = true;
-                        result = hero;
                     }
                 }
             }
@@ -196,8 +199,6 @@ namespace GADE6122_POE_PART1
                         }
                     }
                 }
-
-
             }
             return result;
         }
