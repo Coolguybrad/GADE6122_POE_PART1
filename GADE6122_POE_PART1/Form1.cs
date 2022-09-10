@@ -118,5 +118,10 @@ namespace GADE6122_POE_PART1
                 
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
