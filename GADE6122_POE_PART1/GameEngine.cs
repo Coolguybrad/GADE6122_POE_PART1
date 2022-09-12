@@ -28,19 +28,19 @@ namespace GADE6122_POE_PART1
                 map.getMap()[x, y] = new EmptyTile(x, y, Tile.TileType.Empty); //puts an empty tile where the hero was
                 int posX = map.getHero().getX();
                 int posY = map.getHero().getY();
-                if (m == Character.Movement.Up && !(map.getMap()[posX, posY-1] is Obstacle))
+                if (m == Character.Movement.Up && !(map.getMap()[posX, posY-1] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
                 {
                     map.getHero().Move(m);
                 }
-                else if (m == Character.Movement.Down && !(map.getMap()[posX, posY+1] is Obstacle))
+                else if (m == Character.Movement.Down && !(map.getMap()[posX, posY+1] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
                 {
                     map.getHero().Move(m);
                 }
-                else if (m == Character.Movement.Left && !(map.getMap()[posX-1, posY] is Obstacle))
+                else if (m == Character.Movement.Left && !(map.getMap()[posX-1, posY] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
                 {
                     map.getHero().Move(m);
                 }
-                else if (m == Character.Movement.Right && !(map.getMap()[posX+1, posY] is Obstacle))
+                else if (m == Character.Movement.Right && !(map.getMap()[posX+1, posY] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
                 {
                     map.getHero().Move(m);
                 }

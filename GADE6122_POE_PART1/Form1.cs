@@ -51,6 +51,11 @@ namespace GADE6122_POE_PART1
                 {
                     lblHitOrMiss.Text = "HIT!";
                     gameEngine.getMap().getHero().Attack(gameEngine.getMap().getEnemy()[selectedEnemy]);
+
+                    if (gameEngine.getMap().getEnemy()[cboEnemies.SelectedIndex].isDead())
+                    {
+                        gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY()] = new EmptyTile(gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY(), Tile.TileType.Empty);
+                    }
                 }
                 else
                 {
@@ -62,10 +67,7 @@ namespace GADE6122_POE_PART1
                 lblHitOrMiss.Text = "Invalid Enemy Selected";
             }
         }
-        public void DestroyHeroClones()
-        {
-            gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY()] = new EmptyTile(gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY(), Tile.TileType.Empty);
-        }
+
         private void lblPlayerInfo_Click(object sender, EventArgs e)
         {
 
@@ -91,7 +93,7 @@ namespace GADE6122_POE_PART1
 
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() - 1] is Obstacle))
             {
-                DestroyHeroClones();
+                
                 gameEngine.MovePlayer(Character.Movement.Up);
                 lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
@@ -103,7 +105,7 @@ namespace GADE6122_POE_PART1
 
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() + 1] is Obstacle))
             {
-                DestroyHeroClones();
+                
                 gameEngine.MovePlayer(Character.Movement.Down);
                 lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
@@ -114,7 +116,7 @@ namespace GADE6122_POE_PART1
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
-                DestroyHeroClones();
+                
                 gameEngine.MovePlayer(Character.Movement.Left);
                 lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
@@ -125,7 +127,7 @@ namespace GADE6122_POE_PART1
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
-                DestroyHeroClones();
+                
                 gameEngine.MovePlayer(Character.Movement.Right);
                 lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
