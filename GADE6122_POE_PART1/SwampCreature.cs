@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GADE6122_POE_PART1
 {
-    internal class SwampCreature : Enemy
+    internal class SwampCreature : Enemy //Inherits from Enemy class
     {
 
-        //Constructor
+        //Constructor for the swamp creatures, with the necassary parameters:
         public SwampCreature(int x, int y, TileType t, int d, int hp, int mHP) : base(x, y, t, d, hp, mHP)
         {
             this.damage = 1;
@@ -17,11 +17,8 @@ namespace GADE6122_POE_PART1
             this.maxHP = 10;
         }
 
-
         public override Movement ReturnMove(Movement m = 0) //Overrided ReturnMove
         {
-
-
             Movement[] validM = new Movement[4]; //Array of valid movements
             int count = 0; //counter for validM array
 
@@ -55,8 +52,6 @@ namespace GADE6122_POE_PART1
             Movement move = validM[num];
 
             return move; //returns move
-
-
         }
     }
 }

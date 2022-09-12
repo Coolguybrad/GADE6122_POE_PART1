@@ -24,7 +24,7 @@ namespace GADE6122_POE_PART1
             return x;
         }
 
-        public void setX(int x)
+        public void setX(int x) //setter method that returns the x variable
         {
             this.x = x;
         }
@@ -34,11 +34,12 @@ namespace GADE6122_POE_PART1
             return y;
         }
 
-        public void setY(int y)
+        public void setY(int y) //setter method that returns the y variable
         {
             this.y = y;
         }
 
+        //Returning the tiletype:
         public TileType getType()
         {
             return tType;

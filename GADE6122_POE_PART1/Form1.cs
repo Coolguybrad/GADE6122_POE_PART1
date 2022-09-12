@@ -9,10 +9,10 @@ namespace GADE6122_POE_PART1
 
         public Form1()
         {
+            //Methods to call immediately when the game starts:
             InitializeComponent();
 
             DisplayPlayerInfo();
-
             DisplayMap();
             FillComboBox();
 
@@ -24,11 +24,13 @@ namespace GADE6122_POE_PART1
             lblMap.Text = gameEngine.ToString();
         }
 
+        //Changes the labels text to display the hero's stats:
         public void DisplayPlayerInfo()
         {
             lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
         }
 
+        //Method which fills the comboBox with the enemies which have been created:
         public void FillComboBox()
         {
             int count = 0;
@@ -39,6 +41,7 @@ namespace GADE6122_POE_PART1
             }
         }
 
+        //Attack method which is used for attacking targets, and to display the result of the attacks to the player:
         public void attack()
         {
             int selectedEnemy = cboEnemies.SelectedIndex;
@@ -88,6 +91,7 @@ namespace GADE6122_POE_PART1
 
         }
 
+        //Method which is called when the Up button is clicked:
         private void btnUp_Click(object sender, EventArgs e)
         {
 
@@ -100,6 +104,7 @@ namespace GADE6122_POE_PART1
             }
         }
 
+        //Method which is called when the Down button is clicked:
         private void btnDown_Click(object sender, EventArgs e)
         {
 
@@ -112,6 +117,7 @@ namespace GADE6122_POE_PART1
             }
         }
 
+        //Method which is called when the Left button is clicked:
         private void btnLeft_Click(object sender, EventArgs e)
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle))
@@ -123,6 +129,7 @@ namespace GADE6122_POE_PART1
             }
         }
 
+        //Method which is called when the Right button is clicked:
         private void btnRight_Click(object sender, EventArgs e)
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle))
@@ -139,6 +146,7 @@ namespace GADE6122_POE_PART1
 
         }
 
+        ////Method which is called when the Attack button is clicked, it only calls a method:
         private void btnAttack_Click(object sender, EventArgs e)
         {
             attack();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GADE6122_POE_PART1
 {
-    abstract class Character : Tile
+    abstract class Character : Tile //Inherits from Tile class
     {
         //Protected member variables:
 
@@ -14,6 +14,8 @@ namespace GADE6122_POE_PART1
         protected int maxHP;
         protected int damage;
         protected Tile[] playerVision = new Tile[4]; //0 = up. 1 = down. 2 = left. 3 = right.
+
+        //Movement enum:
 
         public enum Movement
         {
@@ -31,7 +33,7 @@ namespace GADE6122_POE_PART1
 
         }
 
-        //Accessors for the above variables:
+        //Accessors and mutators for the above variables:
 
         public int getHP()
         {
@@ -73,12 +75,13 @@ namespace GADE6122_POE_PART1
             playerVision = v;
         }
 
-        public virtual void Attack(Character target)
+        public virtual void Attack(Character target) //Setting the target's HP after the damage has been applied to the taarget.
         {
             int hp = (target.getHP() - this.getDamage());
             target.setHP(hp);
         }
 
+        //Determining whether or not something is dead (Can be used for enemies or hero):
         public bool isDead()
         {
             bool r;
@@ -93,6 +96,7 @@ namespace GADE6122_POE_PART1
             return r;
         }
 
+        //Checks if the hero can attack a target by returning true or false:
         public virtual bool CheckRange(Character target)
         {
             int r = 1; //Default barehanded range is 1.
@@ -106,6 +110,7 @@ namespace GADE6122_POE_PART1
             return result;
         }
 
+        //Determining the total distance between the character and the target which is parsed into the method:
         public int DistanceTo(Character target)
         {
             int dX = target.getX() - this.getX();
@@ -122,6 +127,7 @@ namespace GADE6122_POE_PART1
             return tD;
         }
 
+        //Setting the movement of a target by changing the coordinates of the target:
         public void Move(Movement m)
         {
             int x = this.getX();
@@ -144,8 +150,10 @@ namespace GADE6122_POE_PART1
             }
         }
 
+        //Abstract method:
         public abstract Movement ReturnMove(Movement m = 0);
 
+        //Abstract ToString() method:
         public abstract string ToString();
     }
 }

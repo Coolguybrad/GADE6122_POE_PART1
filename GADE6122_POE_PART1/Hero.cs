@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GADE6122_POE_PART1
 {
-    class Hero : Character
+    class Hero : Character //Inherits from Character class
     {
+        //Hero constructor:
         public Hero(int x, int y, TileType t, int d, int hp, int mHP) : base(x, y, t)
         {
             this.hp = hp;
@@ -52,6 +53,7 @@ namespace GADE6122_POE_PART1
             return result; //returns move
         }
 
+        //Overriding the ToString() method to display the hero's stats, using concatenation:
         public override string ToString()
         {
             return "Player Stats:\n==========\n" +
