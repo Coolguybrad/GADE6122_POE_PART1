@@ -98,7 +98,7 @@ namespace GADE6122_POE_PART1
             int r = 1; //Default barehanded range is 1.
             bool result = false;
 
-            if (DistanceTo(target) < r)
+            if (DistanceTo(target) <= r)
             {
                 result = true;
             }

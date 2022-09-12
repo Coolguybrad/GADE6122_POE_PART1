@@ -12,11 +12,6 @@ namespace GADE6122_POE_PART1
             InitializeComponent();
 
             DisplayPlayerInfo();
-            cboEnemies.SelectedItem = 0;
-
-            Console.WriteLine("Hello");
-
-
 
             DisplayMap();
             FillComboBox();
@@ -40,15 +35,17 @@ namespace GADE6122_POE_PART1
             for (int i = 0; i < gameEngine.getMap().getEnemy().Length; i++)
             {
                 count++;
-                cboEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType() + " " + count);
+                cboEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType() + " [" + gameEngine.getMap().getEnemy()[i].getX() + ", "+ gameEngine.getMap().getEnemy()[i].getY() +"]");
             }
         }
 
         public void attack()
         {
             int selectedEnemy = cboEnemies.SelectedIndex;
-
-            if (cboEnemies.Text == "Enemy 1" || cboEnemies.Text == "Enemy 2" || cboEnemies.Text == "Enemy 3")
+            string e1 = "Enemy [" + gameEngine.getMap().getEnemy()[0].getX() + ", " + gameEngine.getMap().getEnemy()[0].getY() + "]";
+            string e2 = "Enemy [" + gameEngine.getMap().getEnemy()[0].getX() + ", " + gameEngine.getMap().getEnemy()[0].getY() + "]";
+            string e3 = "Enemy [" + gameEngine.getMap().getEnemy()[0].getX() + ", " + gameEngine.getMap().getEnemy()[0].getY() + "]";
+            if (cboEnemies.Text == e1|| cboEnemies.Text == e2 || cboEnemies.Text == e3)
             {
                 if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[selectedEnemy]))
                 {

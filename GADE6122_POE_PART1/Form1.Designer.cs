@@ -32,10 +32,10 @@
             this.lblMap = new System.Windows.Forms.Label();
             this.lblHitOrMiss = new System.Windows.Forms.Label();
             this.cboEnemies = new System.Windows.Forms.ComboBox();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
             this.btnAttack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -75,47 +75,14 @@
             // cboEnemies
             // 
             this.cboEnemies.AllowDrop = true;
+            this.cboEnemies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEnemies.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEnemies.FormattingEnabled = true;
             this.cboEnemies.Location = new System.Drawing.Point(667, 12);
             this.cboEnemies.Name = "cboEnemies";
             this.cboEnemies.Size = new System.Drawing.Size(121, 20);
             this.cboEnemies.TabIndex = 3;
-            this.cboEnemies.Text = "Select Enemy:";
             this.cboEnemies.SelectedIndexChanged += new System.EventHandler(this.comboBoxEnemies_SelectedIndexChanged);
-            // 
-            // btnUp
-            // 
-            this.btnUp.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUp.Location = new System.Drawing.Point(632, 386);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(75, 23);
-            this.btnUp.TabIndex = 4;
-            this.btnUp.Text = "UP";
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            // 
-            // btnDown
-            // 
-            this.btnDown.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDown.Location = new System.Drawing.Point(632, 415);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 23);
-            this.btnDown.TabIndex = 5;
-            this.btnDown.Text = "DOWN";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // btnRight
-            // 
-            this.btnRight.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRight.Location = new System.Drawing.Point(713, 415);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(75, 23);
-            this.btnRight.TabIndex = 6;
-            this.btnRight.Text = "RIGHT";
-            this.btnRight.UseVisualStyleBackColor = true;
-            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnLeft
             // 
@@ -123,10 +90,43 @@
             this.btnLeft.Location = new System.Drawing.Point(551, 415);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(75, 23);
-            this.btnLeft.TabIndex = 7;
+            this.btnLeft.TabIndex = 4;
             this.btnLeft.Text = "LEFT";
             this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            this.btnLeft.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRight.Location = new System.Drawing.Point(713, 415);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(75, 23);
+            this.btnRight.TabIndex = 5;
+            this.btnRight.Text = "RIGHT";
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDown.Location = new System.Drawing.Point(632, 415);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.TabIndex = 6;
+            this.btnDown.Text = "DOWN";
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnRight_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUp.Location = new System.Drawing.Point(632, 386);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(75, 23);
+            this.btnUp.TabIndex = 7;
+            this.btnUp.Text = "UP";
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnAttack
             // 
@@ -145,10 +145,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAttack);
-            this.Controls.Add(this.btnLeft);
-            this.Controls.Add(this.btnRight);
-            this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnUp);
+            this.Controls.Add(this.btnDown);
+            this.Controls.Add(this.btnRight);
+            this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.cboEnemies);
             this.Controls.Add(this.lblHitOrMiss);
             this.Controls.Add(this.lblMap);
@@ -167,10 +167,10 @@
         private System.Windows.Forms.Label lblMap;
         private System.Windows.Forms.Label lblHitOrMiss;
         private System.Windows.Forms.ComboBox cboEnemies;
-        private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnAttack;
     }
 }

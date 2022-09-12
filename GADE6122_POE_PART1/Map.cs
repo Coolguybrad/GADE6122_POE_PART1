@@ -144,7 +144,7 @@ namespace GADE6122_POE_PART1
                     //try
                     //{
 
-                    if (map[numX, numY] is EmptyTile)
+                    if (map[numX, numY] is EmptyTile && map[numX, numY].getType() != Tile.TileType.Enemy)
                     {
                         hero.setX(numX);
                         hero.setY(numY);
@@ -177,14 +177,14 @@ namespace GADE6122_POE_PART1
                     valid = false;
                     while (!valid)
                     {
-                        numX = rand.Next(map.GetLength(1));
-                        numY = rand.Next(map.GetLength(0));
+                        numX = rand.Next(map.GetLength(0));
+                        numY = rand.Next(map.GetLength(1));
                         try
                         {
                             if (map[numX, numY].getType() == typeH || map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
                             {
-                                numX = rand.Next(1, map.GetLength(1));
-                                numY = rand.Next(1, map.GetLength(0));
+                                numX = rand.Next(1, map.GetLength(0));
+                                numY = rand.Next(1, map.GetLength(1));
                                 valid = false;
                             }
                             else
