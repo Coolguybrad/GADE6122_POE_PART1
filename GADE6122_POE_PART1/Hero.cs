@@ -16,36 +16,34 @@ namespace GADE6122_POE_PART1
             this.damage = 2;
         }
 
-        public override Movement ReturnMove(Movement m)
+        public override Movement ReturnMove(Movement m) //Might be a problem because of movement
         {
             Movement result = Movement.Stationary;
 
-            ConsoleKeyInfo keyPress = Console.ReadKey();
-
-            if (ConsoleKey.W == keyPress.Key)
+            if (m == Movement.Up)
             {
-                if (playerVision[0].getType() != TileType.Enemy || (playerVision[0] is Obstacle)) //Will de Morgan mess us UP??????
+                if (playerVision[0].getType() != TileType.Enemy || !(playerVision[0] is Obstacle)) //Will de Morgan mess us UP??????
                 {
                     result = Movement.Up;
                 }
             }
-            else if (ConsoleKey.S == keyPress.Key)
+            else if (m == Movement.Down)
             {
-                if (playerVision[1].getType() != TileType.Enemy || (playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
+                if (playerVision[1].getType() != TileType.Enemy || !(playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
                 {
                     result = Movement.Down;
                 }
             }
-            else if (ConsoleKey.A == keyPress.Key)
+            else if (m == Movement.Left)
             {
-                if (playerVision[2].getType() != TileType.Enemy || (playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
+                if (playerVision[2].getType() != TileType.Enemy || !(playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
                 {
                     result = Movement.Left;
                 }
             }
-            else if (ConsoleKey.D == keyPress.Key)
+            else if (m == Movement.Right)
             {
-                if (playerVision[3].getType() != TileType.Enemy || (playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
+                if (playerVision[3].getType() != TileType.Enemy || !(playerVision[0] is Obstacle))//Will de Morgan mess us UP??????
                 {
                     result = Movement.Right;
                 }
@@ -56,10 +54,10 @@ namespace GADE6122_POE_PART1
 
         public override string ToString()
         {
-            return "Player Stats:\n" +
+            return "Player Stats:\n==========\n" +
                    "HP: " + hp + " / " + maxHP +
                    "\nDamage: 2\n" +
-                   "[" + x + "," + y + "]";
+                   "Position: " + getY() + ", " + getX();
         }
     }
 }
