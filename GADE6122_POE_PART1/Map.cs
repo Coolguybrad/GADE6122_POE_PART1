@@ -104,7 +104,7 @@ namespace GADE6122_POE_PART1
             height = h;
         }
 
-        //Update vision of hero or enemy
+        //Updates vision of hero or enemy
         public void UpdateVision()
         {
             Tile[] hVis = new Tile[4];
@@ -138,36 +138,31 @@ namespace GADE6122_POE_PART1
 
             if (t == typeH)
             {
-                hero = new Hero(3, 3, Tile.TileType.Hero, 2, 10, 10);
+                hero = new Hero(3, 3, Tile.TileType.Hero, 2, 10, 10); //Assigning default values
                 while (!valid)
                 {
-                    try
+                    //try
+                    //{
+
+                    if (map[numX, numY] is EmptyTile)
                     {
-                        if (map[numX, numY].getType() == typeE)
-                        {
-                            numX = rand.Next(map.GetLength(0));
-                            numY = rand.Next(map.GetLength(1));
-                            valid = false;
-                        }
-                        else if (map[numX, numY] is Obstacle)
-                        {
-                            numX = rand.Next(map.GetLength(0));
-                            numY = rand.Next(map.GetLength(1));
-                            valid = false;
-                        }
-                        else
-                        {
-                            hero.setX(numX);
-                            hero.setY(numY);
-                            map[hero.getY(), hero.getX()] = hero;
-                            valid = true;
-                            result = hero;
-                        }
+                        hero.setX(numX);
+                        hero.setY(numY);
+                        map[hero.getX(), hero.getY()] = hero;
+                        valid = true;
+                        result = hero;
                     }
-                    catch (Exception e)
+                    else
                     {
+                        numX = rand.Next(map.GetLength(0));
+                        numY = rand.Next(map.GetLength(1));
                         valid = false;
                     }
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    valid = false;
+                    //}
                 }
             }
             else

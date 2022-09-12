@@ -53,10 +53,10 @@
             // lblMap
             // 
             this.lblMap.AutoSize = true;
-            this.lblMap.Font = new System.Drawing.Font("BankGothic Md BT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMap.Font = new System.Drawing.Font("BankGothic Md BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMap.Location = new System.Drawing.Point(164, 9);
             this.lblMap.Name = "lblMap";
-            this.lblMap.Size = new System.Drawing.Size(56, 22);
+            this.lblMap.Size = new System.Drawing.Size(43, 17);
             this.lblMap.TabIndex = 1;
             this.lblMap.Text = "Map";
             this.lblMap.Click += new System.EventHandler(this.lblMap_Click);

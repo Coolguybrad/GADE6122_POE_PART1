@@ -42,10 +42,6 @@ namespace GADE6122_POE_PART1
                 count++;
                 cboEnemies.Items.Add(gameEngine.getMap().getEnemy()[i].getType() + " " + count);
             }
-
-            //For later use probably: if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[i]))
-            //{
-            //}
         }
 
         public void attack()

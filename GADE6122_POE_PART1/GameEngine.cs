@@ -20,15 +20,15 @@ namespace GADE6122_POE_PART1
 
         {
             //x and y variables of the hero on the map
-            int y = map.getHero().getX();
-            int x = map.getHero().getY();
+            int x = map.getHero().getX();
+            int y = map.getHero().getY();
 
             bool result = false;//result to return
             if (m != Character.Movement.Stationary) //if m is not = to stationay the code below will run
             {
                 map.getMap()[x, y] = new EmptyTile(x, y, Tile.TileType.Empty); //puts an empty tile where the hero was
-                int posX = map.getHero().getX();
-                int posY = map.getHero().getY();
+                x = map.getHero().getX();
+                y = map.getHero().getY();
 
                 try
                 {
@@ -38,27 +38,27 @@ namespace GADE6122_POE_PART1
                 {
                     if (Character.Movement.Up == m)
                     {
-                        map.getHero().setX(posX);
-                        map.getHero().setX(posY);
+                        map.getHero().setX(x);
+                        map.getHero().setY(y);
                     }
                     else if (Character.Movement.Down == m)
                     {
-                        map.getHero().setX(posX);
-                        map.getHero().setX(posY);
+                        map.getHero().setX(x);
+                        map.getHero().setY(y);
                     }
                     else if (Character.Movement.Left == m)
                     {
-                        map.getHero().setX(posX);
-                        map.getHero().setX(posY);
+                        map.getHero().setX(x);
+                        map.getHero().setY(y);
                     }
                     else
                     {
-                        map.getHero().setX(posX);
-                        map.getHero().setX(posY);
+                        map.getHero().setX(x);
+                        map.getHero().setY(y);
                     }
                 }
 
-                map.getMap()[posX, posY] = new EmptyTile(posX, posY, Tile.TileType.Empty);
+                map.getMap()[x, y] = new EmptyTile(x, y, Tile.TileType.Empty);
 
                 map.getMap()[x, y] = map.getHero(); //sets heroes new location on the map array to the hero object that was created
                 map.UpdateVision(); //updates vision
@@ -98,7 +98,6 @@ namespace GADE6122_POE_PART1
                 }
                 result += "\n";
             }
-            Console.WriteLine(result);
             return result;
         }
     }
