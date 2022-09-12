@@ -43,8 +43,8 @@ namespace GADE6122_POE_PART1
         {
             int selectedEnemy = cboEnemies.SelectedIndex;
             string e1 = "Enemy [" + gameEngine.getMap().getEnemy()[0].getX() + ", " + gameEngine.getMap().getEnemy()[0].getY() + "]";
-            string e2 = "Enemy [" + gameEngine.getMap().getEnemy()[0].getX() + ", " + gameEngine.getMap().getEnemy()[0].getY() + "]";
-            string e3 = "Enemy [" + gameEngine.getMap().getEnemy()[0].getX() + ", " + gameEngine.getMap().getEnemy()[0].getY() + "]";
+            string e2 = "Enemy [" + gameEngine.getMap().getEnemy()[1].getX() + ", " + gameEngine.getMap().getEnemy()[1].getY() + "]";
+            string e3 = "Enemy [" + gameEngine.getMap().getEnemy()[2].getX() + ", " + gameEngine.getMap().getEnemy()[2].getY() + "]";
             if (cboEnemies.Text == e1|| cboEnemies.Text == e2 || cboEnemies.Text == e3)
             {
                 if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[selectedEnemy]))

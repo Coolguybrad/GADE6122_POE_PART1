@@ -62,20 +62,20 @@ namespace GADE6122_POE_PART1
                 {
                     if (map.getMap()[i, j] is EmptyTile) //For the "."
                     {
-                        result += symbols[1] + "  ";
+                        result += symbols[1];
                     }
                     else if (map.getMap()[i, j] is Obstacle) //For the "X"
                     {
-                        result += symbols[3] + " ";
+                        result += symbols[3];
                     }
                     else if (map.getMap()[i, j] is Enemy) //For the "S"
                     {
 
-                        result += symbols[2] + " ";
+                        result += symbols[2];
                     }
                     else if (map.getMap()[i, j] is Hero) //For the "H"
                     {
-                        result += symbols[0] + " ";
+                        result += symbols[0];
                     }
 
 
