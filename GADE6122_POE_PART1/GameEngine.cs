@@ -22,45 +22,29 @@ namespace GADE6122_POE_PART1
             //x and y variables of the hero on the map
             int x = map.getHero().getX();
             int y = map.getHero().getY();
-
             bool result = false;//result to return
             if (m != Character.Movement.Stationary) //if m is not = to stationay the code below will run
             {
                 map.getMap()[x, y] = new EmptyTile(x, y, Tile.TileType.Empty); //puts an empty tile where the hero was
-                x = map.getHero().getX();
-                y = map.getHero().getY();
-
-                try
+                int posX = map.getHero().getX();
+                int posY = map.getHero().getY();
+                if (m == Character.Movement.Up && !(map.getMap()[posX, posY-1] is Obstacle))
                 {
-                    map.getHero().Move(m); //Calls get hero which calls move
+                    map.getHero().Move(m);
                 }
-                catch (Exception e)
+                else if (m == Character.Movement.Down && !(map.getMap()[posX, posY+1] is Obstacle))
                 {
-                    if (Character.Movement.Up == m)
-                    {
-                        map.getHero().setX(x);
-                        map.getHero().setY(y);
-                    }
-                    else if (Character.Movement.Down == m)
-                    {
-                        map.getHero().setX(x);
-                        map.getHero().setY(y);
-                    }
-                    else if (Character.Movement.Left == m)
-                    {
-                        map.getHero().setX(x);
-                        map.getHero().setY(y);
-                    }
-                    else
-                    {
-                        map.getHero().setX(x);
-                        map.getHero().setY(y);
-                    }
+                    map.getHero().Move(m);
                 }
-
-                map.getMap()[x, y] = new EmptyTile(x, y, Tile.TileType.Empty);
-
-                map.getMap()[x, y] = map.getHero(); //sets heroes new location on the map array to the hero object that was created
+                else if (m == Character.Movement.Left && !(map.getMap()[posX-1, posY] is Obstacle))
+                {
+                    map.getHero().Move(m);
+                }
+                else if (m == Character.Movement.Right && !(map.getMap()[posX+1, posY] is Obstacle))
+                {
+                    map.getHero().Move(m);
+                }
+                map.getMap()[map.getHero().getX(), map.getHero().getY()] = map.getHero(); //sets heroes new location on the map array to the hero object that was created
                 map.UpdateVision(); //updates vision
                 result = true; //sets result to true
             }
