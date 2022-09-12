@@ -10,9 +10,9 @@ namespace GADE6122_POE_PART1
         public Form1()
         {
             InitializeComponent();
-            lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
-            DisplayPlayerInfo();
 
+            DisplayPlayerInfo();
+            cboEnemies.SelectedItem = 0;
 
             Console.WriteLine("Hello");
 
@@ -25,7 +25,7 @@ namespace GADE6122_POE_PART1
 
         public void DisplayMap()
         {
-            lblMap.Font = new System.Drawing.Font(System.Drawing.FontFamily.GenericMonospace.ToString(), 10);
+            //lblMap.Font = new System.Drawing.Font(System.Drawing.FontFamily.GenericMonospace.ToString(), 10);
             lblMap.Text = gameEngine.ToString();
         }
 
@@ -52,17 +52,24 @@ namespace GADE6122_POE_PART1
         {
             int selectedEnemy = cboEnemies.SelectedIndex;
 
-            if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[selectedEnemy]))
+            if (cboEnemies.Text == "Enemy 1" || cboEnemies.Text == "Enemy 2" || cboEnemies.Text == "Enemy 3")
             {
-                lblHitOrMiss.Text = "HIT!";
-                gameEngine.getMap().getHero().Attack(gameEngine.getMap().getEnemy()[selectedEnemy]);
+                if (gameEngine.getMap().getHero().CheckRange(gameEngine.getMap().getEnemy()[selectedEnemy]))
+                {
+                    lblHitOrMiss.Text = "HIT!";
+                    gameEngine.getMap().getHero().Attack(gameEngine.getMap().getEnemy()[selectedEnemy]);
+                }
+                else
+                {
+                    lblHitOrMiss.Text = "MISS!";
+                }
             }
             else
             {
-                lblHitOrMiss.Text = "MISS!";
+                lblHitOrMiss.Text = "Invalid Enemy Selected";
             }
         }
-        public void destroyTheStupidDuplicatingHeroClones()
+        public void DestroyHeroClones()
         {
             gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY()] = new EmptyTile(gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY(), Tile.TileType.Empty);
         }
@@ -91,29 +98,22 @@ namespace GADE6122_POE_PART1
 
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() - 1] is Obstacle))
             {
-                destroyTheStupidDuplicatingHeroClones();
+                DestroyHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Up);
-
-                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
-
+                lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
-
             }
-
         }
-
-
 
         private void btnDown_Click(object sender, EventArgs e)
         {
 
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX(), gameEngine.getMap().getHero().getY() + 1] is Obstacle))
             {
-                destroyTheStupidDuplicatingHeroClones();
+                DestroyHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Down);
-                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
+                lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
-
             }
         }
 
@@ -121,11 +121,10 @@ namespace GADE6122_POE_PART1
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() - 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
-                destroyTheStupidDuplicatingHeroClones();
+                DestroyHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Left);
-                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
+                lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
-
             }
         }
 
@@ -133,11 +132,10 @@ namespace GADE6122_POE_PART1
         {
             if (!(gameEngine.getMap().getMap()[gameEngine.getMap().getHero().getX() + 1, gameEngine.getMap().getHero().getY()] is Obstacle))
             {
-                destroyTheStupidDuplicatingHeroClones();
+                DestroyHeroClones();
                 gameEngine.MovePlayer(Character.Movement.Right);
-                lblXandY.Text = gameEngine.getMap().getHero().getX() + " " + gameEngine.getMap().getHero().getY();
+                lblPlayerInfo.Text = gameEngine.getMap().getHero().ToString();
                 DisplayMap();
-
             }
         }
 

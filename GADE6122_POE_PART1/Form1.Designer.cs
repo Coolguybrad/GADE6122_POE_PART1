@@ -36,16 +36,16 @@
             this.btnDown = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
-            this.lblXandY = new System.Windows.Forms.Label();
             this.btnAttack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblPlayerInfo
             // 
             this.lblPlayerInfo.AutoSize = true;
+            this.lblPlayerInfo.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerInfo.Location = new System.Drawing.Point(12, 9);
             this.lblPlayerInfo.Name = "lblPlayerInfo";
-            this.lblPlayerInfo.Size = new System.Drawing.Size(60, 13);
+            this.lblPlayerInfo.Size = new System.Drawing.Size(81, 12);
             this.lblPlayerInfo.TabIndex = 0;
             this.lblPlayerInfo.Text = "Player Info:";
             this.lblPlayerInfo.Click += new System.EventHandler(this.lblPlayerInfo_Click);
@@ -53,9 +53,10 @@
             // lblMap
             // 
             this.lblMap.AutoSize = true;
+            this.lblMap.Font = new System.Drawing.Font("BankGothic Md BT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMap.Location = new System.Drawing.Point(164, 9);
             this.lblMap.Name = "lblMap";
-            this.lblMap.Size = new System.Drawing.Size(28, 13);
+            this.lblMap.Size = new System.Drawing.Size(56, 22);
             this.lblMap.TabIndex = 1;
             this.lblMap.Text = "Map";
             this.lblMap.Click += new System.EventHandler(this.lblMap_Click);
@@ -63,24 +64,29 @@
             // lblHitOrMiss
             // 
             this.lblHitOrMiss.AutoSize = true;
+            this.lblHitOrMiss.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHitOrMiss.Location = new System.Drawing.Point(15, 131);
             this.lblHitOrMiss.Name = "lblHitOrMiss";
-            this.lblHitOrMiss.Size = new System.Drawing.Size(52, 13);
+            this.lblHitOrMiss.Size = new System.Drawing.Size(68, 12);
             this.lblHitOrMiss.TabIndex = 2;
             this.lblHitOrMiss.Text = "HitOrMiss";
             this.lblHitOrMiss.Click += new System.EventHandler(this.lblHitOrMiss_Click);
             // 
             // cboEnemies
             // 
+            this.cboEnemies.AllowDrop = true;
+            this.cboEnemies.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEnemies.FormattingEnabled = true;
             this.cboEnemies.Location = new System.Drawing.Point(667, 12);
             this.cboEnemies.Name = "cboEnemies";
-            this.cboEnemies.Size = new System.Drawing.Size(121, 21);
+            this.cboEnemies.Size = new System.Drawing.Size(121, 20);
             this.cboEnemies.TabIndex = 3;
+            this.cboEnemies.Text = "Select Enemy:";
             this.cboEnemies.SelectedIndexChanged += new System.EventHandler(this.comboBoxEnemies_SelectedIndexChanged);
             // 
             // btnUp
             // 
+            this.btnUp.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUp.Location = new System.Drawing.Point(632, 386);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(75, 23);
@@ -91,6 +97,7 @@
             // 
             // btnDown
             // 
+            this.btnDown.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDown.Location = new System.Drawing.Point(632, 415);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(75, 23);
@@ -101,6 +108,7 @@
             // 
             // btnRight
             // 
+            this.btnRight.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRight.Location = new System.Drawing.Point(713, 415);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(75, 23);
@@ -111,6 +119,7 @@
             // 
             // btnLeft
             // 
+            this.btnLeft.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLeft.Location = new System.Drawing.Point(551, 415);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(75, 23);
@@ -119,17 +128,9 @@
             this.btnLeft.UseVisualStyleBackColor = true;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
-            // lblXandY
-            // 
-            this.lblXandY.AutoSize = true;
-            this.lblXandY.Location = new System.Drawing.Point(632, 115);
-            this.lblXandY.Name = "lblXandY";
-            this.lblXandY.Size = new System.Drawing.Size(92, 13);
-            this.lblXandY.TabIndex = 8;
-            this.lblXandY.Text = "x and y temp label";
-            // 
             // btnAttack
             // 
+            this.btnAttack.Font = new System.Drawing.Font("BankGothic Md BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttack.Location = new System.Drawing.Point(470, 415);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(75, 23);
@@ -144,7 +145,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAttack);
-            this.Controls.Add(this.lblXandY);
             this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.btnDown);
@@ -171,7 +171,6 @@
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnLeft;
-        private System.Windows.Forms.Label lblXandY;
         private System.Windows.Forms.Button btnAttack;
     }
 }

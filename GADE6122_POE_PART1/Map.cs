@@ -182,21 +182,29 @@ namespace GADE6122_POE_PART1
                     valid = false;
                     while (!valid)
                     {
-
-                        if (map[numX, numY].getType() == typeH || map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
+                        numX = rand.Next(map.GetLength(1));
+                        numY = rand.Next(map.GetLength(0));
+                        try
                         {
-                            numX = rand.Next(1, map.GetLength(0));
-                            numY = rand.Next(1, map.GetLength(1));
-                            valid = false;
+                            if (map[numX, numY].getType() == typeH || map[numX, numY].getType() == typeE || (map[numX, numY] is Obstacle))
+                            {
+                                numX = rand.Next(1, map.GetLength(1));
+                                numY = rand.Next(1, map.GetLength(0));
+                                valid = false;
+                            }
+                            else
+                            {
+                                enemy[i].setX(numX);
+                                enemy[i].setY(numY);
+                                map[enemy[i].getX(), enemy[i].getX()] = enemy[i];
+                                result = enemy[i];
+                                valid = true;
+
+                            }
                         }
-                        else
+                        catch (Exception e)
                         {
-                            enemy[i].setX(numX);
-                            enemy[i].setY(numY);
-                            map[enemy[i].getX(), enemy[i].getX()] = enemy[i];
-                            result = enemy[i];
-                            valid = true;
-
+                            valid = false;
                         }
                     }
                 }

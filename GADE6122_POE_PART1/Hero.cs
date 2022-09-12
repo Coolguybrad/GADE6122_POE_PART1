@@ -59,7 +59,7 @@ namespace GADE6122_POE_PART1
             return "Player Stats:\n==========\n" +
                    "HP: " + hp + " / " + maxHP +
                    "\nDamage: 2\n" +
-                   "Position: [" + x + ", " + y + "]";
+                   "Position: " + getX() + ", " + getY();
         }
     }
 }
