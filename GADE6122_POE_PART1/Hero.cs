@@ -20,7 +20,7 @@ namespace GADE6122_POE_PART1
         public override Movement ReturnMove(Movement m) //Might be a problem because of movement
         {
             Movement result = Movement.Stationary;
-
+            
             if (m == Movement.Up)
             {
                 if (playerVision[0].getType() != TileType.Enemy || !(playerVision[0] is Obstacle)) //Will de Morgan mess us UP??????

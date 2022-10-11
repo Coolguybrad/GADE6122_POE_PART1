@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GADE6122_POE_PART1
+﻿namespace GADE6122_POE_PART1
 {
     class GameEngine
     {
@@ -19,31 +17,50 @@ namespace GADE6122_POE_PART1
         public bool MovePlayer(Character.Movement m)
 
         {
+
             //x and y variables of the hero on the map
             int x = map.getHero().getX();
             int y = map.getHero().getY();
+            map.getHero().setPlayerVision(map.getMap()[x, (y - 1)], map.getMap()[x, (y + 1)], map.getMap()[(x - 1), (y)], map.getMap()[(x + 1), (y)]);
             bool result = false;//result to return
             if (m != Character.Movement.Stationary) //if m is not = to stationay the code below will run
             {
                 map.getMap()[x, y] = new EmptyTile(x, y, Tile.TileType.Empty); //puts an empty tile where the hero was
                 int posX = map.getHero().getX();
                 int posY = map.getHero().getY();
-                if (m == Character.Movement.Up && !(map.getMap()[posX, posY-1] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+
+                if (map.getHero().ReturnMove(m) == Character.Movement.Up)
                 {
                     map.getHero().Move(m);
                 }
-                else if (m == Character.Movement.Down && !(map.getMap()[posX, posY+1] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                else if (map.getHero().ReturnMove(m) == Character.Movement.Down)
                 {
                     map.getHero().Move(m);
                 }
-                else if (m == Character.Movement.Left && !(map.getMap()[posX-1, posY] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                else if (map.getHero().ReturnMove(m) == Character.Movement.Left)
                 {
                     map.getHero().Move(m);
                 }
-                else if (m == Character.Movement.Right && !(map.getMap()[posX+1, posY] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                else if (map.getHero().ReturnMove(m) == Character.Movement.Right)
                 {
                     map.getHero().Move(m);
                 }
+                //if (m == Character.Movement.Up && !(map.getMap()[posX, posY - 1] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                //{
+                //    map.getHero().Move(m);
+                //}
+                //else if (m == Character.Movement.Down && !(map.getMap()[posX, posY + 1] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                //{
+                //    map.getHero().Move(m);
+                //}
+                //else if (m == Character.Movement.Left && !(map.getMap()[posX - 1, posY] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                //{
+                //    map.getHero().Move(m);
+                //}
+                //else if (m == Character.Movement.Right && !(map.getMap()[posX + 1, posY] is Obstacle) && !(map.getMap()[posX, posY - 1] is SwampCreature))
+                //{
+                //    map.getHero().Move(m);
+                //}
                 map.getMap()[map.getHero().getX(), map.getHero().getY()] = map.getHero(); //sets heroes new location on the map array to the hero object that was created
                 map.UpdateVision(); //updates vision
                 result = true; //sets result to true

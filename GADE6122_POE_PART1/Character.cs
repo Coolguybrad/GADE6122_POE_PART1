@@ -35,6 +35,18 @@ namespace GADE6122_POE_PART1
 
         //Accessors and mutators for the above variables:
 
+        public Tile[] getPlayerVision() 
+        {
+            return playerVision;
+        }
+
+        public void setPlayerVision(Tile u, Tile d, Tile l, Tile r) 
+        {
+            playerVision[0] = u;
+            playerVision[1] = d;
+            playerVision[2] = l;
+            playerVision[3] = r;
+        }
         public int getHP()
         {
             return hp;
@@ -65,10 +77,7 @@ namespace GADE6122_POE_PART1
             damage = d;
         }
 
-        public Tile[] getPlayerVision()
-        {
-            return playerVision;
-        }
+        
 
         public void setPlayerVision(Tile[] v)
         {
